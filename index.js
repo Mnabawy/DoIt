@@ -1,17 +1,21 @@
 const express = require('express');
-
+const mongoose = require('mongoose')
 const app = express()
 
-app.get('/' , (req, res) => {
-    res.send('Get request to homepage')
-})
+// connecting DB
+const DB_URI = require('./config/keys').mongoURI
 
-app.post('/post' , (req,res) => {
-    res.send('POST request to the post page');
-})
+mongoose.connect(
+    DB_URI,
+    {
+        useNewUrlParser: true,
+    }
+).then(()=> {console.log('DB Connected')})
+.catch((err) => {console.log(err)})
+
 
 const port = 5000;
 
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`app is listning in port ${port}`);
 })
