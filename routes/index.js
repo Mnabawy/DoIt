@@ -31,4 +31,16 @@ const readMany = (req,res) => {
 
 }
 
+//Read One
+const readOne = (req,res) => {
+    const { _id } =req.params;
+
+    Collection.findById(_id, (e,result) => {
+        if(e) {
+            res.status(500).send(e);
+            console.log(e.message);
+        }
+    })
+}
+
 module.exports = router;
