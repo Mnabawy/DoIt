@@ -39,8 +39,17 @@ const readOne = (req,res) => {
         if(e) {
             res.status(500).send(e);
             console.log(e.message);
+        }else{
+            res.send(result)
         }
     })
 }
+
+
+// update
+
+const update = (req,res) => {
+    const changeEntry = req.body;
+} 
 
 module.exports = router;
